@@ -1,22 +1,20 @@
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ProductModule } from './products/product.module';
 import { ConfigModule } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
+    ProductsModule,
     ConfigModule.forRoot({ isGlobal: true }),
-    ProductModule,
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       useCreateIndex: true
     }),
     GraphQLModule.forRoot({
-      autoSchemaFile: 'schema.gql',
+      installSubscriptionHandlers: true,
+      autoSchemaFile: true,
     }),
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}

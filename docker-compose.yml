@@ -13,6 +13,7 @@ services:
     volumes:
       - ./src:/home/app/src:cached
       - ./package.json:/home/app/package.json:cached
+      - ./schema.gql:/home/app/schema.gql:cached
     depends_on:
       - mongo
 

@@ -40,7 +40,8 @@ export class ProductsService {
   async decrementInShoppingCart(_id: string): Promise<Product>{
     const product = await this.productModel.findById(_id);
     if(!product) throw new NotFoundException();
-
+    if(product.inShoppingCart < 1) 
+      throw new BadRequestException("product-in-shopping-cart-empty")
     product.inShoppingCart -= 1;
     return product.save();
   }

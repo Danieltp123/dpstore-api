@@ -36,7 +36,7 @@ export class OrdersService {
         title,
         description,
         price,
-        imgUrl 
+        imgUrl
       } as ProductOrderDto;
     });
     const productsOrder = await Promise.all(productsOrderArr);
@@ -62,7 +62,7 @@ export class OrdersService {
     const productsUpdate = productsOrder.map(async productOrder =>{
       const product = await this.productsService.findOneById(productOrder.productId);
       product.availableQty -= productOrder.productQty;
-      product.inShoppingCart -= productOrder.productQty;
+      product.inShoppingCart = 0;
       return product.save()
     })
 

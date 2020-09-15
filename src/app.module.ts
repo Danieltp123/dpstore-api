@@ -2,10 +2,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
-import { SeedsModule } from './common/seed/seed.module';
 import { OrdersModule } from './orders/orders.module';
 import { ProductsModule } from './products/products.module';
 import { CommandModule } from 'nestjs-command';
+import { SeedsModule } from './seeds/seeds.module';
 
 @Module({
   imports: [

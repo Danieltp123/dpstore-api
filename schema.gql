@@ -1,0 +1,69 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  addOrder(newOrderData: NewOrderInput!): Order!
+  removeOrder(_id: String!): Boolean!
+  addProduct(newProductData: NewProductInput!): Product!
+  incrementInShoppingCart(_id: String!): Product!
+  decrementInShoppingCart(_id: String!): Product!
+  removeInShoppingCart(_id: String!): Product!
+  removeProduct(_id: String!): Boolean!
+}
+
+input NewOrderInput {
+  creditCard: String!
+  productsOrder: [NewProductOrderInput!]!
+}
+
+input NewProductInput {
+  title: String!
+  description: String
+  availableQty: Float!
+  price: Float!
+  imgUrl: String!
+}
+
+input NewProductOrderInput {
+  productId: String!
+  productQty: Float!
+}
+
+type Order {
+  _id: ID!
+  productsOrder: [ProductOrder!]!
+  creditCard: String!
+}
+
+type Product {
+  _id: ID!
+  title: String!
+  description: String
+  availableQty: Float!
+  inShoppingCart: Float!
+  price: Float!
+  imgUrl: String!
+}
+
+type ProductOrder {
+  _id: ID!
+  title: String!
+  description: String
+  productQty: Float!
+  price: Float!
+  imgUrl: String!
+}
+
+type Query {
+  order(_id: String!): Order!
+  orders: [Order!]!
+  product(_id: String!): Product!
+  products: [Product!]!
+  productsInShoppingCart: [Product!]!
+}
+
+type Subscription {
+  orderAdded: Order!
+  productAdded: Product!
+}

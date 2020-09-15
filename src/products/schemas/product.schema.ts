@@ -12,6 +12,9 @@ export class Product extends Document {
   @Prop({ type: Number, required: true })
   availableQty: number;
   
+  @Prop({ type: Number, required: true })
+  inShoppingCart: number;
+  
   @Prop({ type: Number, required: true})
   price: number;
   

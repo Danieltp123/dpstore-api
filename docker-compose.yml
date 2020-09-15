@@ -23,8 +23,3 @@ services:
       - 27017:27017
     volumes:
       - ./db/mongo:/data/db:cached
-
-  redis:
-    image: redis:4.0.10-alpine
-    ports:
-      - 6379:6379
